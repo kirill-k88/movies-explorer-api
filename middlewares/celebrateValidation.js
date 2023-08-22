@@ -19,8 +19,6 @@ module.exports.bodySignupValidator = celebrate({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(7),
     name: Joi.string().min(2).max(30),
-    avatar: Joi.string().regex(REGXP_URL),
-    about: Joi.string().min(2).max(30),
   }),
 });
 
@@ -30,28 +28,30 @@ module.exports.bodyMovieIdValidator = celebrate({
   }),
 });
 
-module.exports.bodyUserIdValidator = celebrate({
+/* module.exports.bodyUserIdValidator = celebrate({
   params: Joi.object().keys({
     userId: Joi.string().length(24).hex().message('Передан некорректный id'),
   }),
-});
+}); */
 
 module.exports.bodyMovieValidator = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30),
-    link: Joi.string().required().regex(REGXP_URL),
+    nameRU: Joi.string().required().min(2).max(180),
+    nameEN: Joi.string().required().min(2).max(180),
+    country: Joi.string().required().min(2).max(180),
+    director: Joi.string().required().min(2).max(180),
+    duration: Joi.number().required(),
+    year: Joi.string().required().min(4).max(4),
+    description: Joi.string().required().max(180),
+    trailerLink: Joi.string().required().regex(REGXP_URL),
+    thumbnail: Joi.string().required().regex(REGXP_URL),
+    movieId: Joi.string().length(24).hex(),
+    image: Joi.string().required().regex(REGXP_URL),
   }),
 });
 
 module.exports.bodyUserValidator = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-  }),
-});
-
-module.exports.bodyAvatarValidator = celebrate({
-  body: Joi.object().keys({
-    avatar: Joi.string().required().regex(REGXP_URL),
   }),
 });

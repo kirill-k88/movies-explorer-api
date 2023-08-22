@@ -5,12 +5,6 @@ const User = require('../models/user');
 
 const { checkResult, checkDBValidationError } = require('../utils/validation');
 
-module.exports.getAllUsers = (req, res, next) => {
-  User.find({})
-    .then((users) => res.send(users))
-    .catch(next);
-};
-
 module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then(checkResult)
@@ -32,12 +26,14 @@ module.exports.createUser = (req, res, next) => {
       req.body.password = hash;
       return User.create(req.body);
     })
-    .then((user) => res.status(201).send({
-      name: user.name,
-      avatar: user.avatar,
-      about: user.about,
-      email: user.email,
-    }))
+    .then((user) =>
+      res.status(201).send({
+        name: user.name,
+        avatar: user.avatar,
+        about: user.about,
+        email: user.email,
+      }),
+    )
     .catch((err) => next(checkDBValidationError(err)));
 };
 

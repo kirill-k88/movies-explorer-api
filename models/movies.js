@@ -15,10 +15,14 @@ movieSchema = new mongoose.Schema({
   country: {
     type: String,
     required: true,
+    minlength: 2,
+    maxlength: 180,
   },
   director: {
     type: String,
     required: true,
+    minlength: 2,
+    maxlength: 180,
   },
   duration: {
     type: Number,
@@ -31,6 +35,7 @@ movieSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+    maxlength: 180,
   },
   trailerLink: {
     type: String,
