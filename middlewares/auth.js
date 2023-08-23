@@ -4,13 +4,12 @@ const AuthError = require('../errorClasses/AuthError');
 const { UNAUTHORIZED_MESSAGE } = require('../utils/constants');
 
 module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
+  const token = req.cookies.jwt;
 
-  if (!authorization || !authorization.startsWith('Bearer ')) {
+  if (!token) {
     return next(new AuthError(UNAUTHORIZED_MESSAGE));
   }
 
-  const token = authorization.replace('Bearer ', '');
   let payload;
 
   const { NODE_ENV, JWT_SECRET } = process.env;

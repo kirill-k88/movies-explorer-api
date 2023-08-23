@@ -19,10 +19,12 @@ module.exports.createUser = (req, res, next) => {
       req.body.password = hash;
       return User.create(req.body);
     })
-    .then((user) => res.status(201).send({
-      name: user.name,
-      email: user.email,
-    }))
+    .then((user) =>
+      res.status(201).send({
+        name: user.name,
+        email: user.email,
+      }),
+    )
     .catch((err) => next(checkDBValidationError(err)));
 };
 
@@ -49,7 +51,16 @@ module.exports.login = (req, res, next) => {
           expiresIn: '7d',
         },
       );
-      return res.send({ token });
+      return res
+        .cookie('jwt', token, {
+          maxAge: 3600000,
+          httpOnly: true,
+        })
+        .end();
     })
     .catch(next);
+};
+
+module.exports.logout = (req, res, next) => {
+  return res.clearCookie('jwt').end();
 };

@@ -5,9 +5,10 @@ const {
   bodySignupValidator,
 } = require('../middlewares/celebrateValidation');
 
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, logout } = require('../controllers/users');
 
 router.post('/signin', bodySigninValidator, login);
+router.post('/signout', logout);
 router.post('/signup', bodySignupValidator, createUser);
 
 module.exports = router;
