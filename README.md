@@ -8,4 +8,4 @@ API for diploma project
 
 IP 158.160.37.235
 
-Backend https://api.movie-searcher.nomoreparties.co
+Backend https://api.movie-searcher.nomoredomainsicu.ru
