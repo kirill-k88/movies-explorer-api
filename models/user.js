@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 
 const AuthError = require('../errorClasses/AuthError');
 
+const { REGXP_EMAIL } = require('../utils/constants');
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -14,6 +16,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    match: [REGXP_EMAIL],
   },
   password: {
     type: String,

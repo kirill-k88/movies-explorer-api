@@ -1,29 +1,22 @@
 const mongoose = require('mongoose');
+const { REGXP_URL } = require('../utils/constants');
 
 const movieSchema = new mongoose.Schema({
   nameRU: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 180,
   },
   nameEN: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 180,
   },
   country: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 180,
   },
   director: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 180,
   },
   duration: {
     type: Number,
@@ -40,14 +33,17 @@ const movieSchema = new mongoose.Schema({
   trailerLink: {
     type: String,
     required: true,
+    match: [REGXP_URL],
   },
   thumbnail: {
     type: String,
     required: true,
+    match: [REGXP_URL],
   },
   image: {
     type: String,
     required: true,
+    match: [REGXP_URL],
   },
   movieId: {
     type: Number,
@@ -56,6 +52,7 @@ const movieSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
+    required: true,
   },
   createdAt: {
     type: Date,
