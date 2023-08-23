@@ -1,6 +1,6 @@
 const ALLOWED_SOURCES = [
-  'https://superiormesto.students.nomoreparties.co',
-  'http://superiormesto.students.nomoreparties.co',
+  'https://movie-searcher.nomoredomainsicu.ru',
+  'http://movie-searcher.nomoredomainsicu.ru',
   'http://localhost:3000',
 ];
 
