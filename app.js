@@ -49,12 +49,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors);
 app.use(preflight);
 
-app.use('/', indexRouter);
+app.use(indexRouter);
 
 app.use(auth);
 
-app.use('/users', usersRouter);
-app.use('/movies', moviesRouter);
+app.use(usersRouter);
+app.use(moviesRouter);
 
 app.use((req, res, next) => {
   next(new NotFoundError('Был запрошен несуществующий роут'));
