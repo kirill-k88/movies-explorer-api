@@ -4,6 +4,7 @@ const ALLOWED_SOURCES = [
   'http://localhost:3000',
 ];
 
+// до реализации фронта разрешаем все
 module.exports = (req, res, next) => {
   const { origin } = req.headers;
   if (ALLOWED_SOURCES.includes(origin)) {
