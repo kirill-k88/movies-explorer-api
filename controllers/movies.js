@@ -5,7 +5,8 @@ const {
 } = require('../utils/validation');
 
 module.exports.getAllMovies = (req, res, next) => {
-  Movie.find({})
+  const userId = req.user._id;
+  Movie.find({ owner: userId })
     .then((movies) => res.send(movies))
     .catch(next);
 };
