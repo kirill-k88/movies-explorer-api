@@ -12,13 +12,6 @@ module.exports.getCurrentUser = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.getUser = (req, res, next) => {
-  User.findById(req.params.userId)
-    .then(checkResult)
-    .then((user) => res.send(user))
-    .catch(next);
-};
-
 module.exports.createUser = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
@@ -26,14 +19,10 @@ module.exports.createUser = (req, res, next) => {
       req.body.password = hash;
       return User.create(req.body);
     })
-    .then((user) =>
-      res.status(201).send({
-        name: user.name,
-        avatar: user.avatar,
-        about: user.about,
-        email: user.email,
-      }),
-    )
+    .then((user) => res.status(201).send({
+      name: user.name,
+      email: user.email,
+    }))
     .catch((err) => next(checkDBValidationError(err)));
 };
 

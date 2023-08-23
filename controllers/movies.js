@@ -19,9 +19,34 @@ module.exports.deleteMovie = (req, res, next) => {
 };
 
 module.exports.createMovie = (req, res, next) => {
-  const { name, link } = req.body;
+  const {
+    movieId,
+    nameRU,
+    nameEN,
+    director,
+    country,
+    year,
+    duration,
+    description,
+    trailerLink,
+    image,
+    thumbnail,
+  } = req.body;
   const owner = req.user;
-  Movie.create({ name, link, owner })
+  Movie.create({
+    movieId,
+    nameRU,
+    nameEN,
+    director,
+    country,
+    year,
+    duration,
+    description,
+    trailerLink,
+    image,
+    thumbnail,
+    owner,
+  })
     .then((movie) => res.status(201).send(movie))
     .catch((err) => {
       next(checkDBValidationError(err));

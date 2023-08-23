@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-movieSchema = new mongoose.Schema({
+
+const movieSchema = new mongoose.Schema({
   nameRU: {
     type: String,
     required: true,
@@ -35,7 +36,6 @@ movieSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    maxlength: 180,
   },
   trailerLink: {
     type: String,
@@ -50,20 +50,13 @@ movieSchema = new mongoose.Schema({
     required: true,
   },
   movieId: {
-    type: String,
+    type: Number,
     required: true,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
-    required: true,
   },
-  likes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'user',
-    },
-  ],
   createdAt: {
     type: Date,
     default: Date.now,
