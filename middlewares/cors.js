@@ -7,7 +7,7 @@ const ALLOWED_SOURCES = [
 module.exports = (req, res, next) => {
   const { origin } = req.headers;
   if (ALLOWED_SOURCES.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Origin', '*');
   }
 
   return next();
