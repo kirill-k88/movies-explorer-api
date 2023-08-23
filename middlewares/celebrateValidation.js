@@ -18,7 +18,7 @@ module.exports.bodySignupValidator = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(7),
-    name: Joi.string().min(2).max(30),
+    name: Joi.string().min(2).max(30).required(),
   }),
 });
 
@@ -30,18 +30,17 @@ module.exports.bodyMovieIdValidator = celebrate({
 
 module.exports.bodyMovieValidator = celebrate({
   body: Joi.object().keys({
-    nameRU: Joi.string().required().min(2).max(180),
-    nameEN: Joi.string().required().min(2).max(180),
-    country: Joi.string().required().min(2).max(180),
-    director: Joi.string().required().min(2).max(180),
+    nameRU: Joi.string().required(),
+    nameEN: Joi.string().required(),
+    country: Joi.string().required(),
+    director: Joi.string().required(),
     duration: Joi.number().required(),
-    year: Joi.string().required().min(4).max(4),
+    year: Joi.string().required(),
     description: Joi.string().required(),
     trailerLink: Joi.string().required().regex(REGXP_URL),
     thumbnail: Joi.string().required().regex(REGXP_URL),
     movieId: Joi.number(),
     image: Joi.string().required().regex(REGXP_URL),
-    owner: Joi.string().length(24).hex().message('Передан некорректный id'),
   }),
 });
 
