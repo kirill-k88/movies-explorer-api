@@ -3,10 +3,14 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 require('dotenv').config();
+const {
+  SERVER_DEFAULT_PORT,
+  MONGODB_DEFAULT_CONNECTTION,
+} = require('./utils/constants');
 
 const {
-  SERVER_PORT = 3000,
-  MONGODB_CONNECTION = 'mongodb://127.0.0.1:27017/bitfilmsdb',
+  SERVER_PORT = SERVER_DEFAULT_PORT,
+  MONGODB_CONNECTION = MONGODB_DEFAULT_CONNECTTION,
 } = process.env;
 
 const { errors } = require('celebrate');
