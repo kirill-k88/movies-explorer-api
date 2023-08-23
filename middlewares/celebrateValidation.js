@@ -1,16 +1,15 @@
 const { celebrate, Joi } = require('celebrate');
-const { REGXP_URL } = require('../utils/constants');
+const {
+  REGXP_URL,
+  INVALID_EMAIL_MESSAGE,
+  INVALID_PASSWORD_MESSAGE,
+  INVALID_ID_MESSAGE,
+} = require('../utils/constants');
 
 module.exports.bodySigninValidator = celebrate({
   body: Joi.object().keys({
-    email: Joi.string()
-      .required()
-      .email()
-      .message('Передано некорректное значение email'),
-    password: Joi.string()
-      .required()
-      .min(7)
-      .message('Передан некорректный пароль'),
+    email: Joi.string().required().email().message(INVALID_EMAIL_MESSAGE),
+    password: Joi.string().required().min(7).message(INVALID_PASSWORD_MESSAGE),
   }),
 });
 
@@ -24,7 +23,7 @@ module.exports.bodySignupValidator = celebrate({
 
 module.exports.bodyMovieIdValidator = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().length(24).hex().message('Передан некорректный id'),
+    movieId: Joi.string().length(24).hex().message(INVALID_ID_MESSAGE),
   }),
 });
 
