@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const {
   SERVER_PORT = 3000,
-  MONGODB_CONNECTION = 'mongodb://127.0.0.1:27017/moviesdb',
+  MONGODB_CONNECTION = 'mongodb://127.0.0.1:27017/bitfilmsdb',
 } = process.env;
 
 const { errors } = require('celebrate');
