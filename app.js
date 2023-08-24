@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 require('dotenv').config();
+
+const { errors } = require('celebrate');
+const helmet = require('helmet');
+const { limiter } = require('./utils/limiter');
+
 const {
   SERVER_DEFAULT_PORT,
   MONGODB_DEFAULT_CONNECTTION,
@@ -13,10 +18,6 @@ const {
   SERVER_PORT = SERVER_DEFAULT_PORT,
   MONGODB_CONNECTION = MONGODB_DEFAULT_CONNECTTION,
 } = process.env;
-
-const { errors } = require('celebrate');
-const helmet = require('helmet');
-const { limiter } = require('./utils/limiter');
 
 const usersRouter = require('./routes/users');
 const moviesRouter = require('./routes/movies');

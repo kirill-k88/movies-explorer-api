@@ -8,7 +8,7 @@ const {
   WRONG_OWNER_MESSAGE,
   DUPLICATE_ERROR_MESSAGE,
   VALIDATION_ERROR_MESSAGE,
-} = require('../utils/constants');
+} = require('./constants');
 
 module.exports.checkResult = (data) => {
   if (!data) {
