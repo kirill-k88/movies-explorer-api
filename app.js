@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
-
 require('dotenv').config();
 
 const { errors } = require('celebrate');
@@ -27,8 +27,8 @@ const auth = require('./middlewares/auth');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
-const cors = require('./middlewares/cors');
-const preflight = require('./middlewares/preflight');
+/* const cors = require('./middlewares/cors');
+const preflight = require('./middlewares/preflight'); */
 
 const NotFoundError = require('./errorClasses/NotFoundError');
 
@@ -53,8 +53,16 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors);
-app.use(preflight);
+/* app.use(cors); */
+/* app.use(preflight); */
+
+app.use(
+  cors({
+    origin: true, // reflect request origin
+    credentials: true,
+  }),
+);
+app.options('*', cors()); // enable pre-flight
 
 app.use(indexRouter);
 
