@@ -8,7 +8,7 @@ const { checkResult, checkDBValidationError } = require('../utils/validation');
 module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then(checkResult)
-    .then((user) => res.send(user))
+    .then((user) => res.send({ name: user.name, email: user.email }))
     .catch(next);
 };
 
@@ -33,7 +33,7 @@ module.exports.updateUser = (req, res, next) => {
     new: true,
     runValidators: true,
   })
-    .then((user) => res.send(user))
+    .then((user) => res.send({ name: user.name, email: user.email }))
     .catch((err) => {
       next(checkDBValidationError(err));
     });
