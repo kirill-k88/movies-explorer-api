@@ -27,8 +27,6 @@ const auth = require('./middlewares/auth');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
-/* const cors = require('./middlewares/cors');
-const preflight = require('./middlewares/preflight'); */
 
 const NotFoundError = require('./errorClasses/NotFoundError');
 
