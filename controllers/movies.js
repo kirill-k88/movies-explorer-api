@@ -12,9 +12,11 @@ module.exports.getAllMovies = (req, res, next) => {
 };
 
 module.exports.deleteMovie = (req, res, next) => {
-  Movie.findOne({ movieId: req.params.movieId })
+  Movie.findOne({ movieId: req.params.movieId, owner: req.user._id })
     .then((movie) => checkResultFindMovie(movie, req.user._id))
-    .then(() => Movie.deleteOne({ movieId: req.params.movieId }))
+    .then(() =>
+      Movie.deleteOne({ movieId: req.params.movieId, owner: req.user._id }),
+    )
     .then((movie) => res.send(movie))
     .catch(next);
 };
