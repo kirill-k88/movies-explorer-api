@@ -56,7 +56,6 @@ module.exports.login = (req, res, next) => {
           maxAge: 3600000,
           httpOnly: true,
           path: '/',
-          /* domain: 'localhost', */
         })
         .send({ name: user.name, email: user.email });
     })
