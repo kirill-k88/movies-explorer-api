@@ -23,7 +23,7 @@ module.exports.bodySignupValidator = celebrate({
 
 module.exports.bodyMovieIdValidator = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().length(24).hex().message(INVALID_ID_MESSAGE),
+    movieId: Joi.number(),
   }),
 });
 
