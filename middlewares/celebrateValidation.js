@@ -3,7 +3,6 @@ const {
   REGXP_URL,
   INVALID_EMAIL_MESSAGE,
   INVALID_PASSWORD_MESSAGE,
-  INVALID_ID_MESSAGE,
 } = require('../utils/constants');
 
 module.exports.bodySigninValidator = celebrate({
@@ -38,7 +37,7 @@ module.exports.bodyMovieValidator = celebrate({
     description: Joi.string().required(),
     trailerLink: Joi.string().required().regex(REGXP_URL),
     thumbnail: Joi.string().required().regex(REGXP_URL),
-    movieId: Joi.number(),
+    movieId: Joi.number().required(),
     image: Joi.string().required().regex(REGXP_URL),
   }),
 });
