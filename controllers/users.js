@@ -19,10 +19,12 @@ module.exports.createUser = (req, res, next) => {
       req.body.password = hash;
       return User.create(req.body);
     })
-    .then((user) => res.status(201).send({
-      name: user.name,
-      email: user.email,
-    }))
+    .then((user) =>
+      res.status(201).send({
+        name: user.name,
+        email: user.email,
+      }),
+    )
     .catch((err) => next(checkDBValidationError(err)));
 };
 
@@ -51,7 +53,7 @@ module.exports.login = (req, res, next) => {
       );
       return res
         .cookie('jwt', token, {
-          maxAge: 3600000,
+          maxAge: 604800000,
           httpOnly: true,
           path: '/',
         })
@@ -60,4 +62,5 @@ module.exports.login = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.logout = (req, res) => res.clearCookie('jwt').send({ answer: 'ok' });
+module.exports.logout = (req, res) =>
+  res.clearCookie('jwt').send({ answer: 'ok' });
