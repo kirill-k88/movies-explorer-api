@@ -1,6 +1,6 @@
-# movies-explorer-api
+# MovieSercher-api
 
-API for diploma project
+API for MovieSearcher App
 
 Адрес репозитория: https://github.com/kirill-k88/movies-explorer-api
 
@@ -8,4 +8,4 @@ API for diploma project
 
 IP 158.160.37.235
 
-Backend https://api.movie-searcher.nomoredomainsicu.ru
+API: https://api.movie-searcher.nomoredomainsicu.ru
