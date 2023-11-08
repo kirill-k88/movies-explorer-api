@@ -2,6 +2,8 @@
 
 API для приложения MovieSearcher
 
+Cтек: Express.js, Mongoos, celebrate, helmet, winston
+
 ## Функционал
 - POST /signin - вход пользователя
 - POST /signout - выход пользователя
